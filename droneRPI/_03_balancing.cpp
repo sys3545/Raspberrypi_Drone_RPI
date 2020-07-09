@@ -48,7 +48,7 @@ void add(balancing_force_t& balancing_force, target_angle_t& target_angle, gyro_
 	static double res_force_yaw;
 
 	double angle_error_pitch = target_angle.pitch - gyro_angle.pitch;
-	double angle_error_roll = target_angle.pitch - gyro_angle.roll;
+	double angle_error_roll = target_angle.roll - gyro_angle.roll;
 	double angle_error_yaw = target_angle.yaw - gyro_angle.yaw;
 
 	res_force_pitch += 1* angle_error_pitch*dt.t_period;
@@ -56,7 +56,7 @@ void add(balancing_force_t& balancing_force, target_angle_t& target_angle, gyro_
 	res_force_yaw += 0* angle_error_yaw*dt.t_period;
 
 	extern throttle_t throttle;
-	if(throttle.value = 0){
+	if(throttle.value == 0){
 		res_force_roll=0;
 		res_force_pitch =0;
 		res_force_yaw =0;
