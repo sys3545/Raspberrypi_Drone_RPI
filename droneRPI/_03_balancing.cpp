@@ -15,7 +15,7 @@ void distribute(motor_speed_t& motor_speed, throttle_t& throttle, balancing_forc
 {
 	motor_speed.a = throttle.value + balancing_force.yaw + balancing_force.pitch + balancing_force.roll;
 	motor_speed.b = throttle.value - balancing_force.yaw + balancing_force.pitch - balancing_force.roll;
-	motor_speed.c = throttle.value + balancing_force.yaw - balancing_force.pitch - balancing_force.roll;
+	motor_speed.c = throttle.value + 15 + balancing_force.yaw - balancing_force.pitch - balancing_force.roll;
 	motor_speed.d = throttle.value - balancing_force.yaw - balancing_force.pitch + balancing_force.roll;  
 
 	if(motor_speed.a < 0) motor_speed.a = 0; // 모터의 속도는 0~250으로 맞춘다. 이를 통해 모터로 가는 값이 0~4095로 정해진다.
