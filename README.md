@@ -7,3 +7,6 @@ Highly unstable flight
 
 version 0.02 (2020.07.09 20:41)
 little stable but rotate in CW (maybe cuz of motor.c) 
+
+version 0.03 (2020.07.11 15:39)
+more stable but not perpect yet (modified target_angle.roll and motor.a motor.d)
