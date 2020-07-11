@@ -13,10 +13,10 @@ void calc(balancing_force_t& balancing_force, target_angle_t& target_angle, gyro
 
 void distribute(motor_speed_t& motor_speed, throttle_t& throttle, balancing_force_t& balancing_force) // throttle, 균형 힘을 이용하여 모터속도를 계산
 {
-	motor_speed.a = throttle.value + balancing_force.yaw + balancing_force.pitch + balancing_force.roll;
+	motor_speed.a = throttle.value + 10 + balancing_force.yaw + balancing_force.pitch + balancing_force.roll;
 	motor_speed.b = throttle.value - balancing_force.yaw + balancing_force.pitch - balancing_force.roll;
-	motor_speed.c = throttle.value + 15 + balancing_force.yaw - balancing_force.pitch - balancing_force.roll;
-	motor_speed.d = throttle.value - balancing_force.yaw - balancing_force.pitch + balancing_force.roll;  
+	motor_speed.c = throttle.value + balancing_force.yaw - balancing_force.pitch - balancing_force.roll;
+	motor_speed.d = throttle.value + 10 - balancing_force.yaw - balancing_force.pitch + balancing_force.roll;  
 
 	if(motor_speed.a < 0) motor_speed.a = 0; // 모터의 속도는 0~250으로 맞춘다. 이를 통해 모터로 가는 값이 0~4095로 정해진다.
 	if(motor_speed.a > 250) motor_speed.a = 250; 
