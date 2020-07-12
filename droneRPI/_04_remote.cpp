@@ -21,6 +21,26 @@ void check(hm10_t& hm10, throttle_t& throttle, target_angle_t& target_angle) // 
 			else cntMsg++;
 
 			if(cntMsg == 8) throttle.value = msp_data;
+			else if(cntMsg == 7)
+				target_angle.yaw = -(msp_data-125);
+			else if(cntMsg == 6)
+				target_angle.pitch = -(msp_data-124.5);
+			else if(cntMsg == 5)
+				target_angle.roll = (msp_data-120);
+
+			#define ANGLE_MAX 30
+			if(target_angle.roll < -ANGLE_MAX)
+				target_angle.roll = -ANGLE_MAX;
+			else if(target_angle.roll > ANGLE_MAX)
+				target_angle.roll = ANGLE_MAX;
+			if(target_angle.pitch < -ANGLE_MAX)
+				target_angle.pitch = -ANGLE_MAX;
+			else if(target_angle.pitch > ANGLE_MAX)
+				target_angle.pitch = ANGLE_MAX;
+			if(target_angle.yaw < -ANGLE_MAX)
+				target_angle.yaw = -ANGLE_MAX;
+			else if(target_angle.yaw > ANGLE_MAX)
+				target_angle.yaw = ANGLE_MAX;
 		}
 	}
 } 
