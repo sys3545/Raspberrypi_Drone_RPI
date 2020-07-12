@@ -15,7 +15,7 @@ dt_t dt;
 gyro_angle_t gyro_angle;
 target_angle_t target_angle = {
 	.roll = 5.0,
-	.pitch = 0.4,
+	.pitch = 0.5,
 	.yaw = 0.0,
 };
 balancing_force_t balancing_force;
